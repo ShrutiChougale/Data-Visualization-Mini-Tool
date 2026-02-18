@@ -1,0 +1,60 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def load_data():
+    file = input("Enter CSV file path: ")
+    try:
+        df = pd.read_csv(file)
+        print("\nData Loaded Successfully!\n")
+        print(df.head())
+        return df
+    except:
+        print("Error loading file.")
+        return None
+
+def show_columns(df):
+    print("\nAvailable Columns:")
+    for i, col in enumerate(df.columns):
+        print(f"{i}: {col}")
+
+def plot_data(df):
+    show_columns(df)
+    
+    x_index = int(input("\nSelect X-axis column number: "))
+    y_index = int(input("Select Y-axis column number: "))
+    
+    x_col = df.columns[x_index]
+    y_col = df.columns[y_index]
+
+    print("\nChoose Plot Type:")
+    print("1. Line Plot")
+    print("2. Bar Plot")
+    print("3. Scatter Plot")
+
+    choice = input("Enter choice: ")
+
+    plt.figure()
+
+    if choice == "1":
+        plt.plot(df[x_col], df[y_col])
+    elif choice == "2":
+        plt.bar(df[x_col], df[y_col])
+    elif choice == "3":
+        plt.scatter(df[x_col], df[y_col])
+    else:
+        print("Invalid choice")
+        return
+
+    plt.xlabel(x_col)
+    plt.ylabel(y_col)
+    plt.title(f"{y_col} vs {x_col}")
+    plt.show()
+
+
+def main():
+    df = load_data()
+    if df is not None:
+        plot_data(df)
+
+if __name__ == "__main__":
+    main()
