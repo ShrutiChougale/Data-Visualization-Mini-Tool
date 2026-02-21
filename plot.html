@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plot Data</title>
+</head>
+<body>
+    <h2>Select Columns</h2>
+
+    <form action="/plot" method="POST">
+        <label>X-axis:</label>
+        <select name="x_col">
+            {% for col in columns %}
+            <option value="{{ col }}">{{ col }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Y-axis:</label>
+        <select name="y_col">
+            {% for col in columns %}
+            <option value="{{ col }}">{{ col }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Plot Type:</label>
+        <select name="plot_type">
+            <option value="line">Line</option>
+            <option value="bar">Bar</option>
+            <option value="scatter">Scatter</option>
+        </select>
+
+        <button type="submit">Generate Plot</button>
+    </form>
+
+    {% if plot_url %}
+        <h3>Generated Plot:</h3>
+        <img src="{{ plot_url }}" width="600">
+    {% endif %}
+
+</body>
+</html>
