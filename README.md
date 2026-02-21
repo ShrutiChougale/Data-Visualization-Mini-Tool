@@ -6,16 +6,12 @@ This is a Python-based data visualization tool that allows users to load a CSV f
 
 🚀 Features
 
-Load any CSV dataset
+Load CSV file
 
-Display dataset preview
+Select X-axis and Y-axis columns
 
-Choose X and Y axis columns
+Choose plot type (Line, Bar, Scatter)
 
-Generate:
+Generate visualization in browser
 
-Line Plot
-
-Bar Plot
-
-Scatter Plot
+Clean and beginner-friendly structure
